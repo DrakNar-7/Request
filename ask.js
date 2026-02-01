@@ -1,15 +1,26 @@
 const yesBtn = document.getElementById('yesBtn');
-const noBtn = document.getElementById('noBtn');
 const quizBox = document.getElementById('quiz-box');
 const successMessage = document.getElementById('success-message');
 
-// When she says Yes
 yesBtn.addEventListener('click', () => {
-    quizBox.classList.add('hidden');
+    // 1. Immediately show your custom success message
+    quizBox.style.display = 'none';
     successMessage.classList.remove('hidden');
-    document.getElementById('notifyForm').submit();
-});
 
+    // 2. Send the notification to Formspree SILENTLY in the background
+    fetch("https://formspree.io/f/your-unique-id", {
+        method: "POST",
+        body: JSON.stringify({ message: "She said YES! Time to prepare for the date." }),
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        }
+    }).then(response => {
+        console.log("Notification sent!");
+    }).catch(error => {
+        console.log("Error sending notification, but she doesn't know!");
+    });
+});
 // The "Runaway" No Button logic
 noBtn.addEventListener('mouseover', () => {
     const x = Math.random() * (window.innerWidth - noBtn.offsetWidth);
