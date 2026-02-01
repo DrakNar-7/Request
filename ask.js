@@ -7,6 +7,7 @@ const successMessage = document.getElementById('success-message');
 yesBtn.addEventListener('click', () => {
     quizBox.classList.add('hidden');
     successMessage.classList.remove('hidden');
+    document.getElementById('notifyForm').submit();
 });
 
 // The "Runaway" No Button logic
