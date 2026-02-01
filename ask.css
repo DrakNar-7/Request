@@ -46,6 +46,11 @@ button {
     font-size: 1.1rem;
     transition: all 0.2s;
 }
+.success-icon {
+    width: 100px;
+    height: auto;
+    margin-bottom: 1rem;
+}
 
 #yesBtn {
     background-color: #22c55e;
